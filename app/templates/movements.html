@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Movements</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="navbar">
+    <h1>Inventory Management System</h1>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('view_products') }}">Products</a>
+    <a href="{{ url_for('view_locations') }}">Locations</a>
+    <a href="{{ url_for('inventory_report') }}">Reports</a>
+    </div>
+    <br>
+<div class="container">
+    <h1>Product Movements</h1>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Product</th>
+            <th>From Location</th>
+            <th>To Location</th>
+            <th>Quantity</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
+        </tr>
+        {% for m in movements %}
+        <tr>
+            <td>{{ m.product.name }}</td>
+            <td>{{ m.from_loc.name if m.from_loc else '' }}</td>
+            <td>{{ m.to_loc.name if m.to_loc else '' }}</td>
+            <td>{{ m.qty }}</td>
+            <td>{{ m.timestamp }}</td>
+            <td>
+                <a href="{{ url_for('edit_movement', movement_id=m.movement_id) }}" class="btn btn-secondary">Edit</a>
+                <form action="{{ url_for('delete_movement', movement_id=m.movement_id) }}" method="POST" style="display:inline;">
+                    <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{ url_for('add_movement') }}" class="btn btn-secondary">Add Movement</a>
+</div>
+</body>
+</html>

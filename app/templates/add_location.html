@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Location</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="navbar">
+    <h1>Inventory Management System</h1>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('view_products') }}">Products</a>
+    <a href="{{ url_for('view_movements') }}">Movements</a>
+    <a href="{{ url_for('inventory_report') }}">Reports</a>
+</div>
+<br>
+<div class = "container">
+    <h1>Add Location</h1>
+    <form method="POST">
+        <label>Location ID:</label><br>
+        <input type="text" name="location_id" required><br><br>
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br><br>
+        <button type="submit" class="btn btn-primary">Add Location</button>
+        <a href="{{ url_for('view_locations') }}" class="btn btn-secondary">Back</a>
+    </form>
+    </div>
+</body>
+</html>

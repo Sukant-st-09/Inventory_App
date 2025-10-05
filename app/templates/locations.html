@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Locations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="navbar">
+    <h1>Inventory Management System</h1>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('view_products') }}">Products</a>
+    <a href="{{ url_for('view_movements') }}">Movements</a>
+    <a href="{{ url_for('inventory_report') }}">Reports</a>
+    </div>
+    <br>
+<div class="container">
+    <h1>Locations List</h1>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Location ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for location in locations %}
+        <tr>
+            <td>{{ location.location_id }}</td>
+            <td>{{ location.name }}</td>
+            <td>
+            <a href="{{ url_for('edit_location', location_id=location.location_id) }}" class="btn btn-secondary">Edit</a>
+            <form action="{{ url_for('delete_location', location_id=location.location_id) }}" method="POST" style="display:inline;">
+                <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+            </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{ url_for('add_location') }}" class="btn btn-secondary">Add</a>
+</div>
+</body>
+</html>

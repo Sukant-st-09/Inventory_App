@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="navbar">
+            <span style="font-size: 1.6rem; font-weight: bold;">Inventory Management System</span>
+    </header>
+
+    <!-- Main Section -->
+        <div class="container" style="text-align: center;">
+    <h1>Welcome to Your Inventory Hub</h1>
+    <p>Track your products, manage locations, and monitor stock movement seamlessly.</p>
+
+    <!-- Column buttons using inline flex style -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px;">
+        <a href="{{ url_for('view_products') }}" class="btn" style="width: 220px;">View Products</a>
+        <a href="{{ url_for('view_locations') }}" class="btn" style="width: 220px;">View Locations</a>
+        <a href="{{ url_for('view_movements') }}" class="btn" style="width: 220px;">Manage Movements</a>
+        <a href="{{ url_for('inventory_report') }}" class="btn" style="width: 220px;">View Reports</a>
+    </div>
+    </div>
+</body>
+</html>
